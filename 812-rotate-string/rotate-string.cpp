@@ -5,16 +5,8 @@ public:
         if(s.size() != goal.size())
             return false;
 
-        for(int i = 0; i < s.size(); i++) {
+        string temp = s + s;
 
-            char first = s[0];
-            s.erase(s.begin());
-            s.push_back(first);
-
-            if(s == goal)
-                return true;
-        }
-
-        return s == goal;
+        return temp.find(goal) != string::npos;
     }
 };

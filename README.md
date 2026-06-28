@@ -39,7 +39,5 @@ This repository is automatically updated whenever an accepted solution is submit
 
 ## LeetCode Profile
 
-Add your profile link here:
-
 https://leetcode.com/u/Mayankgarg15/
 

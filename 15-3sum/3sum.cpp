@@ -39,7 +39,6 @@ public:
                     right--;
                 }
             }
-        }
-        return ans;
+        }return ans;
     }
 };

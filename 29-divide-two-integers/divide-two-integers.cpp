@@ -2,7 +2,6 @@ class Solution {
 public:
     int divide(int dividend, int divisor) {
 
-        // Handle overflow
         if (dividend == INT_MIN && divisor == -1)
             return INT_MAX;
 
@@ -11,21 +10,13 @@ public:
 
         long long ans = 0;
 
-        while (dvd >= dvs) {
-
-            long long temp = dvs;
-            long long multiple = 1;
-
-            while ((temp << 1) <= dvd) {
-                temp <<= 1;
-                multiple <<= 1;
+        for (int i = 31; i >= 0; i--) {
+            if ((dvs << i) <= dvd) {
+                dvd -= (dvs << i);
+                ans += (1LL << i);
             }
-
-            dvd -= temp;
-            ans += multiple;
         }
 
-        // Apply sign
         if ((dividend < 0) ^ (divisor < 0))
             ans = -ans;
 

@@ -9,6 +9,6 @@ public:
                 return num;
         }
 
-        return -1; // Will never execute since majority element always exists
+        return -1; 
     }
 };

@@ -2,8 +2,7 @@ class Solution {
 public:
     int myAtoi(string s) {
 
-        int i = 0;
-        int n = s.size();
+        int i = 0, n = s.size();
 
         while (i < n && s[i] == ' ')
             i++;
@@ -11,28 +10,36 @@ public:
         int sign = 1;
 
         if (i < n && (s[i] == '+' || s[i] == '-')) {
-            if (s[i] == '-')
-                sign = -1;
+            if (s[i] == '-') sign = -1;
             i++;
         }
 
-        long long ans = 0;
+        int ans = 0;
 
         while (i < n && isdigit(s[i])) {
 
             int digit = s[i] - '0';
 
-            ans = ans * 10 + digit;
+            if (sign == 1) {
 
-            if (sign == 1 && ans > INT_MAX)
-                return INT_MAX;
+                if (ans > INT_MAX / 10 ||
+                    (ans == INT_MAX / 10 && digit > 7))
+                    return INT_MAX;
 
-            if (sign == -1 && -ans < INT_MIN)
-                return INT_MIN;
+                ans = ans * 10 + digit;
+
+            } else {
+
+                if (ans < INT_MIN / 10 ||
+                    (ans == INT_MIN / 10 && digit > 8))
+                    return INT_MIN;
+
+                ans = ans * 10 - digit;
+            }
 
             i++;
         }
 
-        return sign * ans;
+        return ans;
     }
 };
